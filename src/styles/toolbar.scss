@@ -1,0 +1,16 @@
+@import "./variables";
+
+.toolbar {
+	height: $toolbar-height;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+.setting-bar {
+	height: $toolbar-height;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
