@@ -1,9 +1,13 @@
-import React from 'react'
+import { observer } from 'mobx-react-lite';
+import React from 'react';
+import '../styles/canvas.scss';
 
-const Canvas = () => {
+const Canvas = observer(() => {
 	return (
-		<div className="canvas">Canvas</div>
+		<div className="canvas">
+			<canvas width={600} height={400} />
+		</div>
 	)
-}
+});
 
 export default Canvas

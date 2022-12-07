@@ -6,6 +6,43 @@
 	display: flex;
 	align-items: center;
 	width: 100%;
+
+	&__btn {
+		height: 25px;
+		width: 25px;
+		border: none;
+		outline: none;
+		cursor: pointer;
+		background-color: #fff;
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	.brush {
+		background-image: url('../assets/img/brush.svg');
+	}
+	.undo {
+		background-image: url('../assets/img/undo.svg');
+		margin-left: auto;
+	}
+	.redo {
+		background-image: url('../assets/img/redo.svg');
+	}
+	.eraser {
+		background-image: url('../assets/img/eraser.svg');
+	}
+	.circle {
+		background-image: url('../assets/img/circle.svg');
+	}
+	.rect {
+		background-image: url('../assets/img/rect.svg');
+	}
+	.save {
+		background-image: url('../assets/img/save.svg');
+	}
+	.line {
+		background-image: url('../assets/img/line.svg');
+	}
 }
 .setting-bar {
 	height: $toolbar-height;
