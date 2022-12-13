@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import React, { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
 import canvasState from '../store/canvasState';
 import toolState from '../store/toolState';
 import '../styles/canvas.scss';
@@ -19,6 +20,15 @@ const Canvas = observer(() => {
 
 	useEffect(() => {
 		canvasState.setCanvas(canvasRef.current);
+		axios.get('http://localhost:5000/image?id=' + sessionId).then(res => {
+			const img = new Image();
+			img.src = res.data;
+			img.onload = () => {
+				const ctx = canvasRef.current.getContext('2d');
+				ctx.clearRect(0,0,canvasRef.current.width, canvasRef.current.height);
+				ctx.drawImage(img, 0,0,canvasRef.current.width, canvasRef.current.height);
+			}
+		});
 	}, []);
 
 	useEffect(() => {
@@ -71,6 +81,8 @@ const Canvas = observer(() => {
 
 	const mouseDownHandler = () => {
 		canvasState.pushToUndo(canvasRef.current.toDataURL());
+		axios.post('http://localhost:5000/image?id=' + sessionId, {img: canvasRef.current.toDataURL()})
+			.then(res => console.log(res.data));
 	}
 
 	const connectionHandler = () => {
